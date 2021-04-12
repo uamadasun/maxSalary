@@ -1,0 +1,42 @@
+def maxSalary(digits):
+
+	digits = sorted(digits)
+
+	#print (digits)
+	while len(digits) > 1:
+		#print("Starting list is: ", digits)
+		first = str(digits[0]) + str(digits[1])
+		second = str(digits[1]) + str(digits[0])
+		#print (first)
+		#print (second)
+		#print ("The first number type is:", type(first))
+		if int(first) >= int(second):
+			digits[0] = first
+		else:
+			digits[0] = second
+		digits.remove(digits[1])
+		#print ("Digits is now: ", digits)
+	return str(digits[0])
+
+	
+
+
+#user puts in how long the list will be
+lenDigits = input()
+
+#user puts in the numbers in the list
+digits = input()
+
+#split the numbers in the list to 2 different numbers. for example: 21 2 becomes [21,2]
+digits_split = digits.split()
+
+#creates a new empty list
+new_digits = []
+
+#pulls out each individual number and appends it to the new_digits list
+for num in digits_split:
+	num = abs(int(num))
+	new_digits.append(num)
+
+#makes #s into integer from strings
+print (maxSalary(new_digits))
